@@ -6,9 +6,9 @@ const retrieve = () => {};
 const add = (platform) => {
   console.log('we are inside platform.controller.js inside add: ');
   return addPlatformModel.isPlatformExists(platform)
-    .then((exists) => {
-      console.log('exists inside isplatformExists inside platform.controller: ', exists);
-      if (exists === false) {
+    .then((id) => {
+      console.log('id inside isplatformExists inside platform.controller: ', id);
+      if (id === -1) {
         return addPlatformModel.add(platform)
         .then((result) => {
           return result
@@ -17,7 +17,7 @@ const add = (platform) => {
         console.log('error inside platform.controller inside add: ', error);
         });
       } else {
-        return 'platform Already Exists';
+        return id;
       }
     })
     .catch((error) => {
