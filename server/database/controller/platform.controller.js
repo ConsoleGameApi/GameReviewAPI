@@ -1,24 +1,32 @@
 const addPlatformModel = require('../model/add.platform.model.js');
-const Promise = require('bluebird');
 
 
 const retrieve = () => {};
 
 const add = (platform) => {
   console.log('we are inside platform.controller.js inside add: ');
-  return new Promise((resolve, reject) => {
-    addPlatformModel.add(platform)
-    .then((result) => {
-      console.log('inside platform.controller');
-      console.log('result inside platform.controller inside add: ', result);
-      return resolve(result);
+  return addPlatformModel.isPlatformExists(platform)
+    .then((exists) => {
+      console.log('exists inside isplatformExists inside platform.controller: ', exists);
+      if (exists === false) {
+        return addPlatformModel.add(platform)
+        .then((result) => {
+          return result
+        })
+        .catch((error) => {
+        console.log('error inside platform.controller inside add: ', error);
+        });
+      } else {
+        return 'platform Already Exists';
+      }
     })
     .catch((error) => {
-      console.log('error inside platform.controller inside add: ', error);
-      return reject(error);
+      console.log('error inside platform.controller inside isGameExists: ', error);
+      return error;
     });
-  });
 };
+
+
 
 
 exports.platform = {

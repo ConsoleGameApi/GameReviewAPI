@@ -1,7 +1,20 @@
 const db = require('../db');
-const Promise = require('bluebird');
-
 const addGenreModel = module.exports;
+
+addGenreModel.isGenreExists = (params) => {
+  console.log('inside addGenreModel check params are: ', params);
+  return db('Genres').where({
+    name: params.genre,
+  }).select('name')
+  .then((result) => {
+    if (result.length) {
+      console.log('Genre already exists: ', result);
+      return true;
+    }
+    console.log('Genre does not exist at', result);
+    return false;
+  });
+};
 
 addGenreModel.add = (params) => {
   return db('Genres').insert({
@@ -12,3 +25,4 @@ addGenreModel.add = (params) => {
     return row[0];
   });
 };
+
