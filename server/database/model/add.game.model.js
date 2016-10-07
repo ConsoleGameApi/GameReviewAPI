@@ -1,5 +1,4 @@
 const db = require('../db');
-const Promise = require('bluebird');
 
 const addGameModel = module.exports;
 
