@@ -13,10 +13,9 @@ addGameModel.isGameExists = (params) => {
     if (result.length) {
       console.log('Game already exists: ', result);
       return true;
-    } else {
-      console.log('Game does not exist at', result);
-      return false;
     }
+    console.log('Game does not exist at', result);
+    return false;
   });
 };
 

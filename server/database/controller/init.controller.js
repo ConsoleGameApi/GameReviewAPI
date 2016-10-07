@@ -6,7 +6,7 @@ const platformController = require('./platform.controller.js');
 
 const gameData = data.slice(0, 10);
 const initializeDatabase = () => {
-  gameController.game.add(gameData[5]);
+  gameController.game.add(gameData[6]);
   // genreController.genre.add(gameData[0]);
   // platformController.platform.add(gameData[0]);
 };
