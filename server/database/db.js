@@ -37,7 +37,7 @@ knex.ensureSchema = function() {
           table.string('title');
           table.string('url');
           table.string('score_phrase');
-          table.boolean('editors_choice');
+          table.integer('editors_choice').unsigned();
           table.integer('score').unsigned();
           table.integer('release_year').unsigned();
           table.integer('release_month').unsigned();
