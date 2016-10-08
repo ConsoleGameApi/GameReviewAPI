@@ -2,7 +2,7 @@ const db = require('../../database/db');
 
 const searchGameModel = module.exports
 
-searchGameModel.search = (params)=> {
+searchGameModel.score = (params)=> {
   console.log(`params inside searchGameModel: ${params}`);
   return db('Games').where({
     score: 9,
