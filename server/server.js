@@ -7,9 +7,9 @@ const databaseRouter = require('./router/database.router');
 app.use(bodyParse.json({limit: '50mb'}));
 app.set('port', process.env.PORT || 3000);
 
-app.use('/api/db', databaseRouter)
+app.use('/api/db', databaseRouter);
 
 app.listen(app.get('port'), function() {
-  db.ensureSchema();
+  // db.ensureSchema();
   console.log('we are now listening on ', app.get('port'))
 })

@@ -11,9 +11,9 @@ module.exports = {
       database: 'gamesapi44',
       charset: 'utf8'
     },
-    pool: {
-      min: 0,
-      max: 7
-    }
-  }
+    // pool: {
+    //   min: 0,
+    //   max: 7
+    // }
+  },
 }

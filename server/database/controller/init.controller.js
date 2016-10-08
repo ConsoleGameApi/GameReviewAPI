@@ -11,12 +11,24 @@ const dataFiltered = data.filter((game) => {
   return (game.genre.length > 1);
 });
 
+const first50 = dataFiltered.slice(0,51)
+const second50 = dataFiltered.slice(51,101)
+const third50 = dataFiltered.slice(101, 151)
+const fourth50 = dataFiltered.slice(151, 201)
+
+
+const init = () => {
+  for (var i = 0; i < first50.length; i++) {
+    initializeDatabase(first50[i]);
+  }
+};
+
 const gameData = dataFiltered.slice(0, 100);
-const initializeDatabase = () => {
+const initializeDatabase = (item) => {
   var promiseArray = [];
-  promiseArray.push(gameController.game.add(gameData[13]));
-  promiseArray.push(platformController.platform.add(gameData[13]));
-  promiseArray = promiseArray.concat(genreController.genre.add(gameData[13]));
+  promiseArray.push(gameController.game.add(item));
+  promiseArray.push(platformController.platform.add(item));
+  promiseArray = promiseArray.concat(genreController.genre.add(item));
   Promise.all(promiseArray)
   .then((dataArray) => {
     console.log('******dataArray: ', dataArray)
@@ -49,5 +61,6 @@ const initializeDatabase = () => {
 };
 
 exports.init = {
+  init,
   initializeDatabase,
 };
