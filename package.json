@@ -4,7 +4,8 @@
   "description": "![schema design](https://github.com/ConsoleGameApi/GameReviewAPI/blob/dev/GamesReviewAPI_Schema.png)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "dependencies": {
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "knex": "^0.12.2",
     "mysql": "^2.11.1",
@@ -26,6 +28,13 @@
   },
   "devDependencies": {
     "dotenv": "^2.0.0",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-config-airbnb-base": "^8.0.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-import": "^2.0.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0",
     "nodemon": "^1.11.0"
   }
 }
