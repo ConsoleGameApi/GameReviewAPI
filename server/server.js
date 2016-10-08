@@ -1,13 +1,17 @@
 const express = require('express');
 const app = express();
-const bodyParse = require('body-parser');
+const bodyParser = require('body-parser');
 const db = require('./database/db');
-const databaseRouter = require('./router/database.router'); 
+const databaseRouter = require('./routers/database.router');
+const searchRouter = require('./routers/api/search.router.js');
+const babel = require('babel-register');
 
-app.use(bodyParse.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json({limit: '50mb'}));
 app.set('port', process.env.PORT || 3000);
 
 app.use('/api/db', databaseRouter);
+app.use('/api/search', searchRouter);
 
 app.listen(app.get('port'), function() {
   // db.ensureSchema();

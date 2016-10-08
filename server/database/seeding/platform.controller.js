@@ -1,8 +1,5 @@
 const addPlatformModel = require('../model/add.platform.model.js');
 
-
-const retrieve = () => {};
-
 const add = (platform) => {
   // console.log('we are inside platform.controller.js inside add: ');
   return addPlatformModel.isPlatformExists(platform)
@@ -30,6 +27,5 @@ const add = (platform) => {
 
 
 exports.platform = {
-  retrieve,
   add,
 };
