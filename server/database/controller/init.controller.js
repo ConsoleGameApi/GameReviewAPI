@@ -10,11 +10,19 @@ const dataFiltered = data.filter((game) => {
 
 const gameData = dataFiltered.slice(0, 100);
 const initializeDatabase = () => {
-  // gameController.game.add(gameData[6]);
-  genreController.genre.add(gameData[12])
+  gameController.game.add(gameData[15])
   .then((resultOfInit) => {
     console.log('resultOfInit: ', resultOfInit)
   });
+ 
+
+
+
+  // genre.add below returns a promise
+  // genreController.genre.add(gameData[13])
+  // .then((resultOfInit) => {
+  //   console.log('resultOfInit: ', resultOfInit)
+  // });
 
   
 

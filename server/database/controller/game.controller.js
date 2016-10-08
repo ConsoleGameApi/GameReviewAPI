@@ -1,24 +1,22 @@
 const addGameModel = require('../model/add.game.model.js');
-const Promise = require('bluebird');
-
 
 const retrieve = () => {};
 
 const add = (game) => {
   console.log('we are inside game.controller.js inside add: ');
   return addGameModel.isGameExists(game)
-    .then((exists) => {
-      console.log('exists inside isGameExists inside game.controller: ', exists);
-      if (exists === false) {
+    .then((id) => {
+      console.log('id inside isGameExists inside game.controller: ', id);
+      if (id === -1) {
         return addGameModel.add(game)
         .then((result) => {
-          return result
+          return result;
         })
         .catch((error) => {
         console.log('error inside game.controller inside add: ', error);
         });
       } else {
-        return 'Game Already Exists';
+        return id;
       }
     })
     .catch((error) => {

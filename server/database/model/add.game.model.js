@@ -7,14 +7,14 @@ addGameModel.isGameExists = (params) => {
   return db('Games').where({
     url: params.url,
     title: params.title,
-  }).select('title')
+  }).select('id')
   .then((result) => {
     if (result.length) {
       console.log('Game already exists: ', result);
-      return true;
+      return result[0].id;
     }
     console.log('Game does not exist at', result);
-    return false;
+    return -1;
   });
 };
 
