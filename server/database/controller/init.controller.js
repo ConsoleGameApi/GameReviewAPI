@@ -15,31 +15,31 @@ const gameData = dataFiltered.slice(0, 100);
 const initializeDatabase = () => {
   const promiseArray = [];
   promiseArray.push(gameController.game.add(gameData[43]));
-  promiseArray.push(genreController.genre.add(gameData[43]));
   promiseArray.push(platformController.platform.add(gameData[43]));
+  promiseArray.push(genreController.genre.add(gameData[43]));
   Promise.all(promiseArray)
   .then((dataArray) => {
     var gameId;
-    var genreId;
     var platformId;
+    var genreId;
     // console.log('returned dataArray: ', dataArray);
     (dataArray[0]) && (gameId = dataArray[0]);
-    (dataArray[1]) && (genreId = dataArray[1]);
-    (dataArray[2]) && (platformId = dataArray[2]);
+    (dataArray[2]) && (platformId = dataArray[1]);
+    (dataArray[1]) && (genreId = dataArray[2]);
 
-    return game2GenreController.game2Genre.add(gameId, genreId)
+    return game2PlatformController.game2Platform.add(gameId, platformId)
     .then((result) => {
-      console.log('inside init result of add game2Genre: ', result)
-      return game2PlatformController.game2Platform.add(gameId, platformId)
+      console.log('inside init result of add game2Platform: ', result)
+      return game2GenreController.game2Genre.add(gameId, genreId)
       .then((result) => {
-        console.log('inside init result of add games2Platforms: ', result);
+        console.log('inside init result of add games2Genres: ', result);
       })
       .catch((error) => {
-        console.log('error inside init inside add games2Platforms: ', error);
+        console.log('error inside init inside add games2Genres: ', error);
       });
     })
     .catch((error) => {
-      console.log('error inside init inside add games2Genres: ', error);
+      console.log('error inside init inside add games2Platform: ', error);
     });
   })
   .catch((error) => {
