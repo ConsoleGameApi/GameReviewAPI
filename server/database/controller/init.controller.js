@@ -22,28 +22,28 @@ const initializeDatabase = () => {
     var gameId;
     var genreId;
     var platformId;
-    console.log('returned dataArray: ', dataArray);
+    // console.log('returned dataArray: ', dataArray);
     (dataArray[0]) && (gameId = dataArray[0]);
     (dataArray[1]) && (genreId = dataArray[1]);
     (dataArray[2]) && (platformId = dataArray[2]);
 
     return games2GenresController.games2Genres.add(gameId, genreId)
     .then((result) => {
-      console.log('inside init result of add games2Genres: ', result);
+      // console.log('inside init result of add games2Genres: ', result);
       return games2PlatformsController.games2Platforms.add(gameId, platformId)
       .then((result) => {
-        console.log('inside init result of add games2Platforms: ', result);
+        // console.log('inside init result of add games2Platforms: ', result);
       })
       .catch((error) => {
-        console.log('error inside init inside add games2Platforms: ', error);
+        // console.log('error inside init inside add games2Platforms: ', error);
       });
     })
     .catch((error) => {
-      console.log('error inside init inside add games2Genres: ', error);
-    })
+      // console.log('error inside init inside add games2Genres: ', error);
+    });
   })
   .catch((error) => {
-    console.log('error inside promiseArray.all iniside init.controller: ', error);
+    // console.log('error inside promiseArray.all iniside init.controller: ', error);
   });
 };
 

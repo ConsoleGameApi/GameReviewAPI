@@ -3,14 +3,14 @@ const db = require('../db');
 const addGameModel = module.exports;
 
 addGameModel.isGameExists = (params) => {
-  console.log('inside addGameModel check params are: ', params);
+  // console.log('inside addGameModel check params are: ', params);
   return db('Games').where({
     url: params.url,
     title: params.title,
   }).select('id')
   .then((result) => {
     if (result.length) {
-      console.log('Game already exists: ', result);
+      // console.log('Game already exists: ', result);
       return result[0].id;
     }
     console.log('Game does not exist at', result);
@@ -19,7 +19,7 @@ addGameModel.isGameExists = (params) => {
 };
 
 addGameModel.add = (params) => {
-  console.log('inside addGameModel params are: ', params);
+  // console.log('inside addGameModel params are: ', params);
   if (params.editors_choice === 'Y') {
     params.editors_choice = 1;
   } else if (params.editors_choice === 'N') {
@@ -36,7 +36,7 @@ addGameModel.add = (params) => {
     release_day: params.release_day,
   })
   .then((row) => {
-    console.log('row from addGameModel.add is: ', row);
+    // console.log('row from addGameModel.add is: ', row);
     return row[0];
   })
   .catch((error) => {

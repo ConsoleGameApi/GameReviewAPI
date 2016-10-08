@@ -8,7 +8,7 @@ addGame2PlatformsModel.add = (gameId, platformId) => {
     platform_id: platformId,
   })
   .then((row) => {
-    console.log('inside addGame2PlatformsModel row is: ', row);
+    // console.log('inside addGame2PlatformsModel row is: ', row);
     return row[0];
   });
 };

@@ -8,7 +8,7 @@ addGame2GenresModel.add = (gameId, genreId) => {
     genre_id: genreId,
   })
   .then((row) => {
-    console.log('inside addGame2GenresModel row is: ', row);
+    // console.log('inside addGame2GenresModel row is: ', row);
     return row[0];
   });
 };
