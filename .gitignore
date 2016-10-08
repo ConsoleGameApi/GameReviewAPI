@@ -1,3 +1,4 @@
 /node_modules
 /server/database/data
 .env
+directory.txt
