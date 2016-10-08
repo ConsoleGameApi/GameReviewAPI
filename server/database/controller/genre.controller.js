@@ -4,11 +4,11 @@ const addGenreModel = require('../model/add.genre.model.js');
 const retrieve = () => {};
 
 const add = (genre) => {
-  console.log('genre inside genre.controller.js inside add: ', genre);
+  // console.log('genre inside genre.controller.js inside add: ', genre);
   return genre.genre.split(', ').map((g) => {
     return addGenreModel.isGenreExists(g)
     .then((id) => {
-      console.log('id inside isgenreExists inside genre.controller: ', id);
+      // console.log('id inside isgenreExists inside genre.controller: ', id);
       if (id === -1) {
         return addGenreModel.add(g)
         .then((id) => {
