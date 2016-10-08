@@ -3,5 +3,6 @@ const searchGameController = require('../../controllers/search/search.game.contr
 
 console.log('are we here')
 
-router.post('/game', searchGameController.search.post);
+router.get('/game', searchGameController.search.get);
+
 module.exports = router

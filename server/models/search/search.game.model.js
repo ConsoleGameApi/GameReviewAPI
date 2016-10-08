@@ -3,13 +3,13 @@ const db = require('../../database/db');
 const searchGameModel = module.exports
 
 searchGameModel.score = (params)=> {
-  console.log(`params inside searchGameModel: ${params}`);
+  console.log('params inside searchGameModel', params);
   return db('Games').where({
-    score: 9,
+    score: params.score,
   }).select('*')
   .then((result) => {
     if (result) {
-      console.log(`game with score of (add params) is: ${params}`);
+      console.log('result inside searchGameModel.score', result);
       return result
     }
   })
@@ -18,3 +18,7 @@ searchGameModel.score = (params)=> {
     return err
   })
 };
+
+searchGameModel.score_range = (params) => {}
+
+searchGameModel.title = (params) => {}
