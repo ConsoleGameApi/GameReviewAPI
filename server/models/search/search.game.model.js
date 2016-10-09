@@ -1,5 +1,6 @@
-const db = require('../../database/db');
 const _ = require('underscore');
+import db from '../../database/db'
+
 const searchGameModel = module.exports
 
 searchGameModel.score = (params)=> {
