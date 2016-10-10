@@ -58,7 +58,7 @@ searchGameModel.title = (params) => {
       console.log('result inside searchGameModel.title: ', result);
       return result;
     }  else {
-      return -1
+      return -1;
     }
   })
   .catch((error) => {
@@ -66,3 +66,30 @@ searchGameModel.title = (params) => {
     return error;
   });
 };
+
+
+searchGameModel.score_release_year = (params) => {
+  console.log('params inside searchGameModel.score_release_year: ', params);
+  return db('Games').where({
+    score: params.score,
+    release_year: params.release_year,
+  }).select('*')
+  .orderBy('score', 'desc')
+  .then((result) => {
+    if (result) {
+      console.log('result inside searchGameModel.score_release_year: ', result);
+      return result;
+    } else {
+      return -1;
+    }
+  })
+   .catch((error) => {
+    console.log('error inside searchGameModel.title: ', error);
+    return error;
+  });
+};
+
+
+
+
+

@@ -7,7 +7,7 @@ const get = (req, res) => {
     return searchGameHelper.read(req.query)
     .then((game) => {
       if (game.length) {
-        res.status(200).send(game)
+        res.status(200).send(game);
       }
       res.status(500).end('no search results, check your optional parameters and try again.');
     })
