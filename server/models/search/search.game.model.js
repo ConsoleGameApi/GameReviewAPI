@@ -89,6 +89,38 @@ searchGameModel.score_release_year = (params) => {
   });
 };
 
+searchGameModel.score_release_year_range = (params) => {
+  console.log('inside searchGameModel.score_release_year_range params are: ', params);
+  const score_range_array = params.score_range
+  .split(', ')
+  .map((elem, index) => {
+    elem = parseInt(elem);
+    if ((typeof elem === 'number') && (elem <= 10) && (elem > 0)) {
+    return parseInt(elem);
+    }
+  });
+  console.log('score_range_array: ', score_range_array);
+  if (score_range_array.length < 2) score_range_array[1] = 10;
+  console.log('score range array: ', score_range_array)
+  return db('Games')
+  .whereBetween('score', score_range_array)
+  .andWhere({
+    release_year: params.release_year
+  })
+  .select('*')
+  .orderBy('score', 'desc')
+  .then((result) => {
+    if (result) {
+      console.log('result inside searchGameModel.score_release_year_range', result);
+      return result
+    }
+  })
+  .catch((err) => {
+    console.log(`error inside searchGameModel.score_release_year_range ${err}`);
+    return err
+  });
+};
+
 
 
 
