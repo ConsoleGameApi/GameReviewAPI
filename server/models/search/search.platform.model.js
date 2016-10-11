@@ -20,7 +20,7 @@ searchPlatformModel.find = (params) => {
     .join('Platforms', 'Games2Platforms.platform_id', 'Platforms.id')
     .where(options)
     .orderBy('score', 'desc')
-    .limit(25)
+    .limit(50)
     .then((result) => {
       console.log('result from query: ', result);
       return result;
