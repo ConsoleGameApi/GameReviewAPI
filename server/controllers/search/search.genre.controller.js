@@ -8,7 +8,7 @@ const get = (req, res) => {
     .then((genre) => {
       console.log('inside genre controller genre is: ', genre)
       if (genre.length) {
-        res.status(200).send(genre);
+        res.status(200).json(genre);
       }
       res.status(500).end('no search results, check your parameters and try again.');
     })

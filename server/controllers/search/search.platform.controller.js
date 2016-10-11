@@ -8,7 +8,7 @@ const get = (req, res) => {
     .then((platform) => {
       console.log('inside platform controller platform is: ', platform);
       if (platform.length) {
-        res.status(200).send(platform);
+        res.status(200).json(platform);
       }
       res.status(500).end('no search results, check your parameters and try again.');
     })
