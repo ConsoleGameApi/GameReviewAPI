@@ -7,10 +7,10 @@ const get = (req, res) => {
     return searchGenreHelper.read(req.query)
     .then((genre) => {
       console.log('inside genre controller genre is: ', genre)
-      if (genre) {
+      if (genre.length) {
         res.status(200).send(genre);
       }
-      res.status(500).end('no search results, check your optional parameters and try again.');
+      res.status(500).end('no search results, check your parameters and try again.');
     })
     .catch((error) => {
       if (error) {
