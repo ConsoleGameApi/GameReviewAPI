@@ -11,25 +11,39 @@ const dataFiltered = data.filter((game) => {
   return (game.genre.length > 1);
 });
 
-const first50 = dataFiltered.slice(11,80);
+const first50 = dataFiltered.slice(1200,1300);
 const second50 = dataFiltered.slice(51,101)
 const third50 = dataFiltered.slice(140, 151)
 const fourth50 = dataFiltered.slice(300, 400)
 
 
-const init = () => {
-  for (var i = 0; i < first50.length; i++) {
-    initializeDatabase(fourth50[i]);
-  }
+const arrayOfFunctionsThatReturnPromises = () => {
+  return first50.map((item) => {
+    console.log('are we inside arrayOfFunctionsThatReturnPromises')
+    return () => {
+      console.log('are we inside return func ')
+      return initializeDatabase(item);
+    };
+  });
 };
 
+const init = async () => {
+  const array = arrayOfFunctionsThatReturnPromises()
+  for (var i = 0; i < array.length; i++) {
+    console.log('are we inside the LOOP')
+    await array[i]()
+    .catch((err) => {
+      console.log('** err inside init: ', err)
+    });
+  }
+};
 
 const initializeDatabase = (item) => {
   var promiseArray = [];
   promiseArray.push(gameController.game.add(item));
   promiseArray.push(platformController.platform.add(item));
   promiseArray = promiseArray.concat(genreController.genre.add(item));
-  Promise.all(promiseArray)
+  return Promise.all(promiseArray)
   .then((dataArray) => {
     var gameId;
     var platformId;
