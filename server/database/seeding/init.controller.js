@@ -14,12 +14,12 @@ const dataFiltered = data.filter((game) => {
 const first50 = dataFiltered.slice(11,80);
 const second50 = dataFiltered.slice(51,101)
 const third50 = dataFiltered.slice(140, 151)
-const fourth50 = dataFiltered.slice(151, 201)
+const fourth50 = dataFiltered.slice(300, 400)
 
 
 const init = () => {
   for (var i = 0; i < first50.length; i++) {
-    initializeDatabase(first50[i]);
+    initializeDatabase(fourth50[i]);
   }
 };
 
