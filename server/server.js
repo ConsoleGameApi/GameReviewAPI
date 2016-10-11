@@ -1,10 +1,10 @@
-import express from 'express';
+const express = require('express');
 const app = express();
-import path from 'path';
-import bodyParser from 'body-parser';
-import db from './database/db';
-import databaseRouter from './routers/database.router';
-import searchRouter from './routers/api/search.router.js';
+const path = require('path');
+const bodyParser = require('body-parser');
+const db = require('./database/db');
+const databaseRouter = require('./routers/database.router');
+const searchRouter = require('./routers/api/search.router.js');
 require(path.join(__dirname, '/middlewares/application.js'))(app, express);
 
 
@@ -17,6 +17,6 @@ app.use('/api/db', databaseRouter);
 app.use('/api/search', searchRouter);
 
 app.listen(app.get('port'), function() {
-  // db.ensureSchema();
+  db.ensureSchema();
   console.log('we are now listening on ', app.get('port'));
 })

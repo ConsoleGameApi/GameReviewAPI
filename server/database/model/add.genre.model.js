@@ -2,6 +2,7 @@ const db = require('../db');
 
 const addGenreModel = module.exports;
 
+
 addGenreModel.isGenreExists = (g) => {
   console.log('inside addGenreModel check params are: ', g);
   return db('Genres').where({

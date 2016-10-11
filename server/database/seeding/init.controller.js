@@ -18,9 +18,9 @@ const fourth50 = dataFiltered.slice(151, 201)
 
 
 const init = () => {
-  for (var i = 0; i < first50.length; i++) {
-    initializeDatabase(first50[i]);
-  }
+  Promise.each(third50.slice(45,55), (item) => {
+    initializeDatabase(item)
+  });
 };
 
 
@@ -38,12 +38,12 @@ const initializeDatabase = (item) => {
     var genreIdArray = dataArray.slice(2);
     return game2PlatformController.game2Platform.add(gameId, platformId)
     .then((result) => {
-      console.log('inside init result of add game2Platform: ', result);
+      // console.log('inside init result of add game2Platform: ', result);
       return Promise.each(genreIdArray, (genreId) => {
         return game2GenreController.game2Genre.add(gameId, genreId);
       })
       .then((result) => {
-        console.log('inside init result of add games2Genres: ', result);
+        // console.log('inside init result of add games2Genres: ', result);
       })
       .catch((error) => {
         console.log('error inside init inside add games2Genres: ', error);
