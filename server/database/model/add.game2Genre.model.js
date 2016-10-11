@@ -3,17 +3,17 @@ const db = require('../db');
 const addGame2GenresModel = module.exports;
 
 addGame2GenresModel.isGame2GenreExists = (gameId, genreId) => {
-  console.log('inside addGameGames2Genres check params are: ', gameId, genreId);
+  // console.log('inside addGameGames2Genres check params are: ', gameId, genreId);
   return db('Games2Genres').where({
     game_id: gameId,
     genre_id: genreId,
   }).select('id')
   .then((result) => {
     if (result.length) {
-      console.log('Game2Genre entry already exists: ', result);
+      // console.log('Game2Genre entry already exists: ', result);
       return result[0].id;
     }
-    console.log('Game2Genre entry does not exist at', result);
+    // console.log('Game2Genre entry does not exist at', result);
     return -1;
   });
 };

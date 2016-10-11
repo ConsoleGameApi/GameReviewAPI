@@ -4,17 +4,17 @@ const addGenreModel = module.exports;
 
 
 addGenreModel.isGenreExists = (genre) => {
-  console.log('inside addGenreModel check params are: ', genre);
+  // console.log('inside addGenreModel check params are: ', genre);
   return db('Genres').where({
     name: genre,
   }).select('id')
   .then((result) => {
-    console.log('RESULT: ', result)
+    // console.log('RESULT: ', result)
     if (result.length) {
-      console.log('Genre already exists: ', result);
+      // console.log('Genre already exists: ', result);
       return result[0].id;
     }
-    console.log('Genre does not exist at', result);
+    // console.log('Genre does not exist at', result);
     return -1;
   });
 };
