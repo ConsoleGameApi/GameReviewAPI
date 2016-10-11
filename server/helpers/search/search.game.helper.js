@@ -2,6 +2,11 @@ const searchGameModel = require('../../models/search/search.game.model.js');
 
 const searchGameHelper = module.exports
 
+
+searchGameHelper.read = (params) => {
+  return searchGameModel.find(params)
+}
+
 // searchGameHelper.read = (params) => {
 //   console.log('inside searchGameHelper params are: ', params)
 //   if (params.score || params.score_range) {
@@ -25,7 +30,3 @@ const searchGameHelper = module.exports
 //     return searchGameModel.score_range(params);
 //   }
 // };
-
-searchGameHelper.read = (params) => {
-  return searchGameModel.find(params)
-}
