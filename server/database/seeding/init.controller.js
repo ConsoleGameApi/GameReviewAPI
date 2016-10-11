@@ -13,14 +13,14 @@ const dataFiltered = data.filter((game) => {
 
 const first50 = dataFiltered.slice(0,10);
 const second50 = dataFiltered.slice(51,101)
-const third50 = dataFiltered.slice(101, 151)
+const third50 = dataFiltered.slice(140, 151)
 const fourth50 = dataFiltered.slice(151, 201)
 
 
 const init = () => {
-  Promise.each(third50.slice(45,55), (item) => {
-    initializeDatabase(item)
-  });
+  for (var i = 0; i < third50.length; i++) {
+    initializeDatabase(third50[i]);
+  }
 };
 
 

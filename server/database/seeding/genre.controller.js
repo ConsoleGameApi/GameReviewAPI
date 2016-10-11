@@ -1,20 +1,21 @@
 const addGenreModel = require('../model/add.genre.model.js');
-
+const Promise = require('bluebird');
 
 const retrieve = () => {};
 
-// check the control on how the result knows if it exists or not, the result.length thing may not be accurate. 
 
 const add = (genre) => {
   // console.log('genre inside genre.controller.js inside add: ', genre);
-  return genre.genre.split(', ').map((g) => {
+  const genreArray = genre.genre.split(', ')
+  return genreArray.map((g) => {
     return addGenreModel.isGenreExists(g)
     .then((id) => {
-      // console.log('id inside isgenreExists inside genre.controller: ', id);
+      console.log('**id inside isgenreExists inside genre.controller: ', id);
       if (id === -1) {
+        console.log("********** WE HIT ID === -1 HERE")
         return addGenreModel.add(g)
-        .then((id) => {
-          return id;
+        .then((idAdded) => {
+          return idAdded;
         })
         .catch((error) => {
         console.log('error inside genre.controller inside add: ', error);
@@ -74,31 +75,7 @@ const add = (genre) => {
 //     });
 // };
 
-// const add = (genre) => {
-//   console.log('genre inside genre.controller.js inside add: ', genre);
-//   const genreArray = genre.genre.split(', ')
-//   Promise.each(genreArray, (item) => {
-//     return addGenreModel.isGenreExists(item)
-//     .then((id) => {
-//       console.log('id inside isgenreExists inside genre.controller: ', id);
-//       if (id === -1) {
-//         return addGenreModel.add(g)
-//         .then((id) => {
-//           return id;
-//         })
-//         .catch((error) => {
-//         console.log('error inside genre.controller inside add: ', error);
-//         });
-//       } else {
-//         return id;
-//       }
-//     })
-//     .catch((error) => {
-//       console.log('error inside genre.controller inside isGameExists: ', error);
-//       return error;
-//     });
-//   });
-// };
+
 
 exports.genre = {
   retrieve,
