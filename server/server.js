@@ -18,5 +18,5 @@ app.use('/api/search', searchRouter);
 
 app.listen(app.get('port'), function() {
   // db.ensureSchema();
-  console.log('we are now listening on ', app.get('port'))
+  console.log('we are now listening on ', app.get('port'));
 })

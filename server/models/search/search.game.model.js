@@ -70,24 +70,68 @@ searchGameModel.title = (params) => {
 
 searchGameModel.score_release_year = (params) => {
   console.log('params inside searchGameModel.score_release_year: ', params);
-  return db('Games').where({
-    score: params.score,
-    release_year: params.release_year,
-  }).select('*')
-  .orderBy('score', 'desc')
-  .then((result) => {
-    if (result) {
-      console.log('result inside searchGameModel.score_release_year: ', result);
-      return result;
-    } else {
-      return -1;
+  if (params.release_year) {
+    if (params.release_month) {
+      if (params.release_day) {
+          return db('Games').where({
+          score: params.score,
+          release_year: params.release_year,
+          release_day: params.release_day
+          })
+          .select('*')
+          .orderBy('score', 'desc')
+          .then((result) => {
+            if (result) {
+              console.log('result inside searchGameModel.score_release_year: ', result);
+              return result;
+            } else {
+              return -1;
+            }
+          })
+         .catch((error) => {
+          console.log('error inside searchGameModel.title: ', error);
+          return error;
+        });
+      }
+        return db('Games').where({
+        score: params.score,
+        release_year: params.release_year,
+        release_month: params.release_month,
+        })
+        .select('*')
+        .orderBy('score', 'desc')
+        .then((result) => {
+          if (result) {
+            console.log('result inside searchGameModel.score_release_year: ', result);
+            return result;
+          } else {
+            return -1;
+          }
+        })
+       .catch((error) => {
+        console.log('error inside searchGameModel.title: ', error);
+        return error;
+      });
     }
-  })
-   .catch((error) => {
-    console.log('error inside searchGameModel.title: ', error);
-    return error;
-  });
-};
+    return db('Games').where({
+      score: params.score,
+      release_year: params.release_year,
+    }).select('*')
+    .orderBy('score', 'desc')
+    .then((result) => {
+      if (result) {
+        console.log('result inside searchGameModel.score_release_year: ', result);
+        return result;
+      } else {
+        return -1;
+      }
+    })
+     .catch((error) => {
+      console.log('error inside searchGameModel.title: ', error);
+      return error;
+    });
+  };
+}
 
 searchGameModel.score_release_year_range = (params) => {
   console.log('inside searchGameModel.score_release_year_range params are: ', params);
@@ -102,23 +146,66 @@ searchGameModel.score_release_year_range = (params) => {
   console.log('score_range_array: ', score_range_array);
   if (score_range_array.length < 2) score_range_array[1] = 10;
   console.log('score range array: ', score_range_array)
-  return db('Games')
-  .whereBetween('score', score_range_array)
-  .andWhere({
-    release_year: params.release_year
-  })
-  .select('*')
-  .orderBy('score', 'desc')
-  .then((result) => {
-    if (result) {
-      console.log('result inside searchGameModel.score_release_year_range', result);
-      return result
+  if (params.release_year) {
+    if (params.release_month) {
+      if (params.release_day) {
+        return db('Games')
+        .whereBetween('score', score_range_array)
+        .andWhere({
+          release_year: params.release_year,
+          release_month: params.release_month,
+          release_day: params.release_day,
+        })
+        .select('*')
+        .orderBy('score', 'desc')
+        .then((result) => {
+          if (result) {
+            console.log('result inside searchGameModel.score_release_year_month_dayrange', result);
+            return result;
+          }
+        })
+        .catch((err) => {
+          console.log(`error inside searchGameModel.score_release_year_month_day_range ${err}`);
+          return err;
+        });
+      }
+      return db('Games')
+      .whereBetween('score', score_range_array)
+      .andWhere({
+        release_year: params.release_year,
+        release_month: params.release_month,
+      })
+      .select('*')
+      .orderBy('score', 'desc')
+      .then((result) => {
+        if (result) {
+          console.log('result inside searchGameModel.score_release_year_month_range', result);
+          return result
+        }
+      })
+      .catch((err) => {
+        console.log(`error inside searchGameModel.score_release_year__month_range ${err}`);
+        return err
+      });
     }
-  })
-  .catch((err) => {
-    console.log(`error inside searchGameModel.score_release_year_range ${err}`);
-    return err
-  });
+    return db('Games')
+    .whereBetween('score', score_range_array)
+    .andWhere({
+      release_year: params.release_year
+    })
+    .select('*')
+    .orderBy('score', 'desc')
+    .then((result) => {
+      if (result) {
+        console.log('result inside searchGameModel.score_release_year_range', result);
+        return result
+      }
+    })
+    .catch((err) => {
+      console.log(`error inside searchGameModel.score_release_year_range ${err}`);
+      return err
+    });
+  };
 };
 
 

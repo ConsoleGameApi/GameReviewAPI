@@ -11,25 +11,19 @@ const dataFiltered = data.filter((game) => {
   return (game.genre.length > 1);
 });
 
-const first50 = dataFiltered.slice(0,51)
+const first50 = dataFiltered.slice(0,10);
 const second50 = dataFiltered.slice(51,101)
 const third50 = dataFiltered.slice(101, 151)
 const fourth50 = dataFiltered.slice(151, 201)
 
-console.log('dataFiltered lenght: ', dataFiltered.length)
-const smallPiece = dataFiltered.slice(12512, 12625).concat(dataFiltered.slice(14444,14920));
 
 const init = () => {
-  for (var i = 0; i < smallPiece.length; i++) {
-    initializeDatabase(smallPiece[i]);
+  for (var i = 0; i < first50.length; i++) {
+    initializeDatabase(first50[i]);
   }
 };
 
 
-
-
-
-const gameData = dataFiltered.slice(0, 100);
 const initializeDatabase = (item) => {
   var promiseArray = [];
   promiseArray.push(gameController.game.add(item));
@@ -44,12 +38,12 @@ const initializeDatabase = (item) => {
     var genreIdArray = dataArray.slice(2);
     return game2PlatformController.game2Platform.add(gameId, platformId)
     .then((result) => {
-      // console.log('inside init result of add game2Platform: ', result);
+      console.log('inside init result of add game2Platform: ', result);
       return Promise.each(genreIdArray, (genreId) => {
         return game2GenreController.game2Genre.add(gameId, genreId);
       })
       .then((result) => {
-        // console.log('inside init result of add games2Genres: ', result);
+        console.log('inside init result of add games2Genres: ', result);
       })
       .catch((error) => {
         console.log('error inside init inside add games2Genres: ', error);
