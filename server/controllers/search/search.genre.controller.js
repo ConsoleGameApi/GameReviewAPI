@@ -6,7 +6,8 @@ const get = (req, res) => {
   console.log('inside searchGenreController req.query is: ', req.query);
     return searchGenreHelper.read(req.query)
     .then((genre) => {
-      if (genre.length) {
+      console.log('inside genre controller genre is: ', genre)
+      if (genre) {
         res.status(200).send(genre);
       }
       res.status(500).end('no search results, check your optional parameters and try again.');
