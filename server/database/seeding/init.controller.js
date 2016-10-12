@@ -7,6 +7,8 @@ const game2GenreController = require('./game2Genre.controller');
 const game2PlatformController = require('./game2Platform.controller');
 const Promise = require('bluebird');
 
+const data = ['dummy', 'data'];
+
 const dataFiltered = data.filter((game) => {
   return (game.genre.length > 1);
 });
