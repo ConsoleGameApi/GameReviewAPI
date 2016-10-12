@@ -11,7 +11,7 @@ const dataFiltered = data.filter((game) => {
   return (game.genre.length > 1);
 });
 
-const first50 = dataFiltered.slice(1200,1300);
+const first50 = dataFiltered.slice(2000,8000);
 const second50 = dataFiltered.slice(51,101)
 const third50 = dataFiltered.slice(140, 151)
 const fourth50 = dataFiltered.slice(300, 400)
