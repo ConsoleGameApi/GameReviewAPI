@@ -9,9 +9,11 @@ const game2PlatformController = require('./game2Platform.controller');
 const Promise = require('bluebird');
 
 
-const dataFiltered = data.filter((game) => {
-  return (game.genre.length > 1);
-});
+// const dataFiltered = data.filter((game) => {
+//   return (game.genre.length > 1);
+// });
+
+const dataFiltered = ['dum', 'dum']
 
 const first50 = dataFiltered.slice(11000,11050);
 const second50 = dataFiltered.slice(51,101)
