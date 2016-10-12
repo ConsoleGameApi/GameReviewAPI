@@ -2,11 +2,15 @@
   "name": "gamereviewapi",
   "version": "1.0.0",
   "description": "![schema design](https://github.com/ConsoleGameApi/GameReviewAPI/blob/dev/GamesReviewAPI_Schema.png)",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postInstall": "node server/index.js",
-    "start": "node server/index.js"
+    "start": "nodemon server/index.js"
+  },
+  "engines" : {
+    "node": "6.3.1",
+    "npm": "3.8.6"
   },
   "repository": {
     "type": "git",
