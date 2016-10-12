@@ -2,15 +2,13 @@
   "name": "gamereviewapi",
   "version": "1.0.0",
   "description": "![schema design](https://github.com/ConsoleGameApi/GameReviewAPI/blob/dev/GamesReviewAPI_Schema.png)",
-  "main": "server.js",
+  "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postInstall": "node server/index.js",
-    "start": "node server/index.js"
-  },
-  "engines": {
-    "node": "6.3.1",
-    "npm": "3.8.6"
+    "start": "nodemon server/index.js --exec babel-node --presets es2015,stage-0",
+    "build": "babel server -d dist",
+    "serve": "node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +21,7 @@
   },
   "homepage": "https://github.com/JonathanCMitchell/GameReviewAPI#readme",
   "dependencies": {
+    "babel-cli": "^6.16.0",
     "babel-core": "^6.17.0",
     "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "^6.16.0",
