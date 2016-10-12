@@ -17,7 +17,7 @@ app.use('/api/db', databaseRouter);
 app.use('/api/search', searchRouter);
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../', 'index.html'))
+  res.sendFile(path.join(__dirname, '/', 'index.html'))
 });
 
 app.listen(app.get('port'), function() {
