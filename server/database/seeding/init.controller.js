@@ -1,5 +1,5 @@
   // Endpoint reminder: /api/db/init
-const data = require('../data/ign');
+// const data = require('../data/ign');
 const gameController = require('./game.controller');
 const genreController = require('./genre.controller');
 const platformController = require('./platform.controller');
