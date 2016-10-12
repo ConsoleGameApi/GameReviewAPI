@@ -1,5 +1,5 @@
   // Endpoint reminder: /api/db/init
-// const data = require('../data/ign');
+const data = require('../data/ign');
 const gameController = require('./game.controller');
 const genreController = require('./genre.controller');
 const platformController = require('./platform.controller');
@@ -7,7 +7,6 @@ const game2GenreController = require('./game2Genre.controller');
 const game2PlatformController = require('./game2Platform.controller');
 const Promise = require('bluebird');
 
-const data = ['dummy', 'data'];
 
 const dataFiltered = data.filter((game) => {
   return (game.genre.length > 1);
