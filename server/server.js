@@ -13,7 +13,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.set('port', process.env.PORT || 3000);
 
 
-app.use('/api/db', databaseRouter);
+// app.use('/api/db', databaseRouter);
 app.use('/api/search', searchRouter);
 
 app.get('/', (req, res) => {
