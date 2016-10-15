@@ -6,6 +6,7 @@ console.log('are we here')
 
 router.get('/games', searchGameController.search.get);
 router.get('/genres', searchGenreController.search.get);
+router.get('/genres/list', searchGenreController.search.all);
 router.get('/platforms', searchPlatformController.search.get);
 
 module.exports = router

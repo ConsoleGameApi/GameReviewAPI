@@ -20,7 +20,25 @@ const get = (req, res) => {
     });
 };
 
+const all = (req, res) => {
+  console.log('inside all inside genres: ', req.query)
+  return searchGenreModel.all(req.query)
+  .then((genre) => {
+      console.log('inside genre controller.all genre is: ', genre)
+      if (genre.length) {
+        res.status(200).json(genre);
+      }
+      res.status(500).end('no search results, check your parameters and try again.');
+    })
+    .catch((error) => {
+      if (error) {
+        console.log('error with that search: ', error);
+        res.status(500).end(error);
+      }
+    });
+};
 
 exports.search = {
   get,
+  all,
 };

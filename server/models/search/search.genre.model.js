@@ -75,8 +75,22 @@ searchGenreModel.find = (params) => {
     }
   })
   .catch((error) => {
-    console.error('error inside searchGameModel: ', error);
+    console.error('error inside searchGenreModel: ', error);
   });
 };
+
+searchGenreModel.all = (params) => {
+  return db('Genres')
+  .select('name')
+  .then((result) => {
+    if (result) {
+      console.log('result inside searchGenreModel.all: ', result)
+      return result;
+    }
+  })
+  .catch((error) => {
+    console.error('error inside searchGenreModel.all: ', error);
+  });
+}
 
 export default searchGenreModel;
