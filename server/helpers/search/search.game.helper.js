@@ -4,6 +4,7 @@ const searchGameHelper = module.exports;
 
 
 searchGameHelper.read = (params) => {
+  console.log('params inside search game helper: ', params)
   return searchGameModel.find(params);
 };
 

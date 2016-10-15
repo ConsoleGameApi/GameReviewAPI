@@ -19,7 +19,7 @@ searchGameModel.find = (params) => {
     .limit(25)
     .then((result) => {
       if (result) {
-        // console.log('result inside searchGameModel.score: ', result)
+        console.log('result inside searchGameModel.score: ', result)
         return result;
       }
     })
@@ -44,7 +44,7 @@ searchGameModel.find = (params) => {
     .limit(25)
     .then((result) => {
       if (result) {
-        // console.log('result inside searchGameModel score_range: ', result);
+        console.log('result inside searchGameModel score_range: ', result);
         return result;
       }
     })
@@ -52,6 +52,7 @@ searchGameModel.find = (params) => {
       console.error('error inside searchGameModel.score_range: ', error);
     });
   }
+  console.log('inside no score game options are:', options )
     return db('Games')
     .where(options)
     .select("*")
@@ -59,7 +60,7 @@ searchGameModel.find = (params) => {
     .limit(25)
     .then((result) => {
       if (result) {
-        console.log('result inside searchGameModel.score: ', result)
+        // console.log('result inside searchGameModel no score: ', result);
         return result;
       }
     })
