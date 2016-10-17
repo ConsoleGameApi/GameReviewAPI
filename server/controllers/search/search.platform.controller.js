@@ -20,7 +20,26 @@ const get = (req, res) => {
     });
 };
 
+const all = (req, res) => {
+  console.log('inside all inside genres: ', req.query)
+  return searchPlatformModel.all(req.query)
+  .then((platform) => {
+      console.log('inside Platform controller.all platform is: ', platform)
+      if (platform.length) {
+        res.status(200).json(platform);
+      }
+      res.status(500).end('no search results, check your parameters and try again.');
+    })
+    .catch((error) => {
+      if (error) {
+        console.log('error with that search: ', error);
+        res.status(500).end(error);
+      }
+    });
+};
+
 
 exports.search = {
   get,
+  all,
 };

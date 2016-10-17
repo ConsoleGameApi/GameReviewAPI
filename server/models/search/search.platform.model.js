@@ -79,4 +79,19 @@ searchPlatformModel.find = (params) => {
   });
 };
 
+
+searchPlatformModel.all = (params) => {
+  return db('Platforms')
+  .select('console_name')
+  .then((result) => {
+    if (result) {
+      console.log('result inside searchPlatformModel.all: ', result)
+      return result;
+    }
+  })
+  .catch((error) => {
+    console.error('error inside searchPlatformModel.all: ', error);
+  });
+}
+
 export default searchPlatformModel;
