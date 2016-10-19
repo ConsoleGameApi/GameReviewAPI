@@ -75,4 +75,3 @@ File structure:
     │   │   └── search.router.js
     │   └── database.router.js
     └── server.js
-    ```
