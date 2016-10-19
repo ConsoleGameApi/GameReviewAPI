@@ -26,6 +26,7 @@ This API contains 18k rows of data from ign game reviews.
 9. Commit changes and make a pull request
 
 File structure:
+```
 ├── GamesReviewAPI_Schema.png
 ├── directory.txt
 ├── index.html
@@ -74,3 +75,4 @@ File structure:
     │   │   └── search.router.js
     │   └── database.router.js
     └── server.js
+    ```
